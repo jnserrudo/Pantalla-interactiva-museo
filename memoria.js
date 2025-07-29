@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function handleCardClick(card) {
-        if (!canFlip || !card.classList.contains('flipped') || card.classList.contains('matched')) {
+        if (!canFlip || !card.classList.contains('flipped') || card.classList.contains('matched') || flippedCards.includes(card)) {
             return;
         }
 

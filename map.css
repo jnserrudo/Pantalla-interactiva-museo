@@ -10,12 +10,12 @@ body, html {
 /* fuentes */
 @font-face {
     font-family: 'Museo300';
-    src:url(assets/fonts/museo-sans-300.ttf) format('truetype');
+    src:url(https://drive.google.com/uc?id=17khSS4fVU5nqgYCqDftGvXhpdeo4bXFp) format('truetype');
 }
 
 @font-face {
     font-family: 'Museo500';
-    src: url(assets/fonts/museo-sans-500.otf) format('opentype');
+    src: url(https://drive.google.com/uc?id=1l5v--Liv95FTc6IGNPn9HRjzifkRof_x) format('opentype');
 }
 
 

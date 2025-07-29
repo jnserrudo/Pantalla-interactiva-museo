@@ -1,12 +1,12 @@
 /* fuentes */
 @font-face {
         font-family: 'Museo300';
-        src:url(assets/fonts/museo-sans-300.ttf) format('truetype');
+        src:url(https://drive.google.com/uc?id=17khSS4fVU5nqgYCqDftGvXhpdeo4bXFp) format('truetype');
     }
     
 @font-face {
         font-family: 'Museo500';
-        src: url(assets/fonts/museo-sans-500.otf) format('opentype');
+        src: url(https://drive.google.com/uc?id=1l5v--Liv95FTc6IGNPn9HRjzifkRof_x) format('opentype');
     }
 
 
@@ -58,7 +58,7 @@ html, body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-image: url(assets/images/BGs/titulo_BG.jpg);
+    background-image: url(https://drive.google.com/uc?id=1GUZeUjoB6BdSoS1jwTFfu8E9tPRetsfy);
     background-size: cover;
     position: relative;
     z-index: 2;
@@ -127,7 +127,7 @@ html, body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image:url(assets/images/BGs/menu_bg.jpg);
+    background-image:url(https://drive.google.com/uc?id=1VRR3lCpxbRgONoJ0zLl8-VtT9iN2oM7L);
     background-size: cover;
     position: relative;
 }
@@ -196,7 +196,7 @@ html, body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-image: url(assets/images/BGs/Ramal_1_bg.JPG);
+    background-image: url(https://drive.google.com/uc?id=1TVA52tXKEKCSKmiLTCVgyjFY1ZYVBd86);
     background-size: cover;
     position: relative;
     z-index: 2;

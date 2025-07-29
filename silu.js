@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Lógica Principal del Juego (esqueleto) ---
     function startGame() {
         console.log("El juego ha comenzado");
-        score = 1;
+        score = 0;
         // Aquí iniciaremos la primera ronda
         startRound();
     }
@@ -117,7 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     
                     // Redirige a main.html después de 5 segundos
                     setTimeout(() => {
-                        window.location.href = 'main.html';
+                        window.location.href = 'index.html';
                     }, 5000);
     
                 }, 1000); // Espera 1 segundo para que se vea la última selección correcta
@@ -129,6 +129,9 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         } else {
             clickedImage.classList.add('incorrect');
+            setTimeout(() => {
+                clickedImage.classList.remove('incorrect');
+            }, 1000);
         }
     }
 
