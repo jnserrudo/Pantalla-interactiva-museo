@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa Interactivo</title>
+    <link rel="stylesheet" href="map.css">
+    <!-- A-Frame Library for 3D models -->
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+</head>
+<body>
+    <!-- Intro Video -->
+    <!--<video id="intro_geo" autoplay muted playsinline>
+        <source src="assets/Videos/closeup.mp4" type="video/mp4">
+        Tu navegador no soporta el elemento de video.
+    </video>
+
+    <!-- Socompa Volcano Popup (initially hidden) -->
+    <div class="pantalla" id="popup_modelo_volcan_socompa">
+        <a-scene embedded vr-mode-ui="enabled: false" renderer="colorManagement: true;">
+
+            <!-- Camera with cursor -->
+            <a-entity id="camera" position="0 1.5 4" camera wasd-controls="enabled: false">
+                <a-entity cursor="fuse: false; rayOrigin: mouse;"
+                        raycaster="objects: [id^='click-point']"
+                        position="0 0 -1"
+                        geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.02"
+                        material="opacity: 0%; shader: flat">
+                </a-entity>
+            </a-entity>
+    
+            <!-- Lights -->
+            <a-entity light="type: ambient; color: #BBB"></a-entity>
+            <a-entity light="type: directional; color: #FFF; intensity: 0.6" position="-0.5 1 1"></a-entity>
+
+            <!-- 3D Model Container -->
+            <a-entity id="model-container">
+                <a-gltf-model id="model" src="#socompa" 
+                    position="0 0.5 0" scale="1.5 1.5 1.5" rotation="15 0 0"
+                    animation="property: position; to: 0 0.8 0; dir: alternate; dur: 2000; loop: true; easing: easeInOutSine">
+                </a-gltf-model>
+            </a-entity>
+    
+            <!-- Assets -->
+            <a-assets>
+                <a-asset-item id="socompa" src="assets/models/Socompa-Ver1.glb"></a-asset-item>
+            </a-assets>
+    
+            <!-- Info Cards -->
+            <div class="volcan-infocards">
+                <div class="volcan-grid">
+                    <div class="volcan-card">
+                        <h2>Como se ve</h2>
+                        <p>Se puede ver desde ambos lados de la frontera y está en una zona muy alta y aislada. Su cercanía al Paso Socompa lo hace importante también desde el punto de vista geográfico.</p>
+                    </div>
+                    <div class="volcan-card empty"></div>
+                    <div class="volcan-card volver-mapa-card">
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <h2 style="text-align: center;">Volver al mapa!</h2>
+                        </div>
+                        <button id="boton_volver_puna">
+                            <img src="assets/images/icons/backarrow.png" id="backarrow_puna" alt="Volver">
+                        </button> 
+                    </div>
+                    <div class="volcan-card">
+                        <h2>Ubicación</h2>
+                        <p>El Volcán Socompa está ubicado en la frontera entre Argentina y Chile, al oeste de la provincia de Salta. Es uno de los volcanes más altos de Sudamérica, con 6.031 metros de altura.</p>
+                    </div>
+                    <div class="volcan-card">
+                        <h2>¿Está activo?</h2>
+                        <p>Aunque no ha tenido erupciones en tiempos modernos, en la zona todavía hay señales de calor dentro de la Tierra, como fumarolas, lo que indica que el volcán sigue vivo por dentro.</p>
+                    </div>
+                    <div class="volcan-card">
+                        <h2>¿Cómo se formó?</h2>
+                        <p>Socompa es un estratovolcán, es decir, se construyó a lo largo del tiempo por muchas erupciones que fueron dejando capas de lava, cenizas y rocas volcánicas.</p>
+                    </div>
+                </div>
+            </div>
+        </a-scene>
+    </div>
+
+    <!-- Quehuar Volcano Popup (initially hidden) -->
+    <div class="pantalla" id="popup_modelo_volcan_quehuar" data-zoom-enabled="false">
+        <a-scene embedded vr-mode-ui="enabled: false" renderer="colorManagement: true;">
+
+            <!-- Camera with cursor -->
+            <a-entity id="camera" position="0 1.4 0.5" camera wasd-controls="enabled: false">
+                <a-entity cursor="fuse: false; rayOrigin: mouse;"
+                        raycaster="objects: [id^='click-point']"
+                        position="0 0 -1"
+                        geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.02"
+                        material="opacity: 0%; shader: flat">
+                </a-entity>
+            </a-entity>
+    
+            <!-- Lights -->
+            <a-entity light="type: ambient; color: #BBB"></a-entity>
+            <a-entity light="type: directional; color: #FFF; intensity: 0.6" position="-0.5 1 1"></a-entity>
+
+            <!-- 3D Model Container -->
+            <a-entity id="model-container">
+                <a-gltf-model id="model" src="#quehuar" 
+                    position="0 0.5 0" scale="1 1 1" rotation="0 0 0">
+                </a-gltf-model>
+            </a-entity>
+    
+            <!-- Assets -->
+            <a-assets>
+                <a-asset-item id="quehuar" src="assets/models/quehuar.glb"></a-asset-item>
+            </a-assets>
+    
+            <!-- Info Cards -->
+            <div class="volcan-infocards">
+                <div class="volcan-grid">
+                    <div class="volcan-card">
+                        <h2>Altura y prominencia</h2>
+                        <p>Se eleva a aproximadamente 6.130 m sobre el nivel del mar, aunque estimaciones oscilan entre 6.105 m y 6.177 m según diferentes modelos topográficos</p>
+                    </div>
+                    <div class="volcan-card empty"></div>
+                    <div class="volcan-card volver-mapa-card">
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <h2 style="text-align: center;">Volver al mapa!</h2>
+                        </div>
+                        <button id="boton_volver_puna">
+                            <img src="assets/images/icons/backarrow.png" id="backarrow_puna" alt="Volver">
+                        </button> 
+                    </div>
+                    <div class="volcan-card">
+                        <h2>Estratovolcán inactivo con glaciar interno</h2>
+                        <p>El Quehuar es un estratovolcán inactivo, cubierto de nieve la mayor parte del año, y alberga un pequeño glaciar dentro de su cráter</p>
+                    </div>
+                    <div class="volcan-card">
+                        <h2>Montaña sagrada y hallazgos arqueológicos</h2>
+                        <p>En 1999 se hallaron en la cima los restos momificados de una niña inca sacrificada durante la ceremonia de capac cocha, junto a estructuras ceremoniales, incluyendo una posible plataforma ushniv</p>
+                    </div>
+                    <div class="volcan-card">
+                        <h2>Restos arqueológicos detallados</h2>
+                        <p>Las excavaciones revelaron un complejo con dos estructuras: una cámara oval (fatum funerario) y una plataforma rectangular alineada con el sol naciente en el solsticio de diciembre, lo que muestra gran sofisticación arquitectónica inca
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </a-scene>
+    </div>
+
+    <!-- Acay Volcano Popup (initially hidden) -->
+    <div class="pantalla" id="popup_modelo_volcan_acay" >
+        <a-scene embedded vr-mode-ui="enabled: false" renderer="colorManagement: true;">
+
+            <!-- Camera with cursor -->
+            <a-entity id="camera" position="0 2.2 3" camera wasd-controls="enabled: false">
+                <a-entity cursor="fuse: false; rayOrigin: mouse;"
+                        raycaster="objects: [id^='click-point']"
+                        position="0 0 -1"
+                        geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.02"
+                        material="opacity: 0%; shader: flat">
+                </a-entity>
+            </a-entity>
+    
+            <!-- Lights -->
+            <a-entity light="type: ambient; color: #BBB"></a-entity>
+            <a-entity light="type: directional; color: #FFF; intensity: 0.6" position="-0.5 1 1"></a-entity>
+
+            <!-- 3D Model Container -->
+            <a-entity id="model-container">
+                <a-gltf-model id="model" src="#acay" 
+                    position="0 1 0" scale="0.0001 0.0001 0.0001" rotation="0 0 0">
+                </a-gltf-model>
+            </a-entity>
+    
+            <!-- Assets -->
+            <a-assets>
+                <a-asset-item id="acay" src="assets/models/acay.glb"></a-asset-item>
+            </a-assets>
+    
+            <!-- Info Cards -->
+            <div class="volcan-infocards">
+                <div class="volcan-grid">
+                    <div class="volcan-card">
+                        <h2>Glaciares antiguos y agua</h2>
+                        <p>Presenta circos glaciares de glaciaciones pasadas; hoy sólo conserva nieve estacional, pero tiene glaciares rocosos (rock glaciers) en cañadones .</p>
+                    </div>
+                    <div class="volcan-card empty"></div>
+                    <div class="volcan-card volver-mapa-card">
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <h2 style="text-align: center;">Volver al mapa!</h2>
+                        </div>
+                        <button id="boton_volver_puna">
+                            <img src="assets/images/icons/backarrow.png" id="backarrow_puna" alt="Volver">
+                        </button> 
+                    </div>
+                    <div class="volcan-card">
+                        <h2>Santuario arqueológico</h2>
+                        <p>Fue un santuario incaico de alta montaña: en la cima y alrededores se hallan recintos, muros, caminos y petroglifos, con evidencia de ocupación ritual.</p>
+                    </div>
+                    <div class="volcan-card">
+                        <h2>Desafíos deportivos modernos</h2>
+                        <p>Se organizan eventos de trail running y trekking de altura, como el “Desafío del Acay”, considerado la tercera carrera más alta del mundo, alcanzando los 5 000 m.</p>
+                    </div>
+                    <div class="volcan-card">
+                        <h2>Actividades mineras históricas</h2>
+                        <p>Durante la época colonial, hubo pequeñas explotaciones de plata, lavaderos y fundiciones artesanales en las vertientes y arroyos del Nevado Acay.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </a-scene>
+    </div>
+
+    <!-- llullaillaco Volcano Popup-->
+    <div class="pantalla" id="popup_modelo_volcan_llullaillaco"  >
+        <a-scene embedded vr-mode-ui="enabled: false" renderer="colorManagement: true;">
+
+            <!-- Camera with cursor -->
+            <a-entity id="camera" position="0 2.2 2" camera wasd-controls="enabled: false">
+                <a-entity cursor="fuse: false; rayOrigin: mouse;"
+                        raycaster="objects: [id^='click-point']"
+                        position="0 0 -1"
+                        geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.02"
+                        material="opacity: 0%; shader: flat">
+                </a-entity>
+            </a-entity>
+    
+            <!-- Lights -->
+            <a-entity light="type: ambient; color: #BBB"></a-entity>
+            <a-entity light="type: directional; color: #FFF; intensity: 0.6" position="-0.5 1 1"></a-entity>
+
+            <!-- 3D Model Container -->
+            <a-entity id="model-container">
+                <a-gltf-model id="model" src="#llullaillaco" 
+                    position="0 0.4 0" scale="2 2 2" rotation="0 0 0">
+                </a-gltf-model>
+            </a-entity>
+    
+            <!-- Assets -->
+            <a-assets>
+                <a-asset-item id="llullaillaco" src="assets/models/llullaillaco.glb"></a-asset-item>
+            </a-assets>
+    
+            <!-- Info Cards -->
+            <div class="volcan-infocards">
+                <div class="volcan-grid">
+                    <div class="volcan-card">
+                        <h2>Altura y jerarquía continental</h2>
+                        <p>Con 6.739 m es el volcán más alto de Salta, 
+                            el segundo volcán activo más alto del mundo (después del Ojos del Salado) y 
+                            el cuarto volcán más elevado globalmente</p>
+                    </div>
+                    <div class="volcan-card empty"></div>
+                    <div class="volcan-card volver-mapa-card">
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <h2 style="text-align: center;">Volver al mapa!</h2>
+                        </div>
+                        <button id="boton_volver_puna">
+                            <img src="assets/images/icons/backarrow.png" id="backarrow_puna" alt="Volver">
+                        </button> 
+                    </div>
+                    <div class="volcan-card">
+                        <h2>Museo de preservación única</h2>
+                        <p>En Salta, el MAAM exhibe a los niños en cápsulas de crioconservación: atmósfera de -20°C y 
+                            bajo oxígeno, cambiando la exposición cada 6 meses para preservar la integridad</p>
+                    </div>
+                    <div class="volcan-card">
+                        <h2>Nombre y significado cultural</h2>
+                        <p>“Llullaillaco” podría derivar del quechua "llullu" (“blando que luego endurece”) o 
+                            "llulla-llaco" (“agua engañosa”), en referencia a la lava o ausencia de agua </p>
+                    </div>
+                    <div class="volcan-card">
+                        <h2>Actividad volcánica</h2>
+                        <p>A pesar de ser parte de una zona sísmica activa, se lo considera en latencia o dormido, 
+                            con nieve y planchones de hielo pero sin glaciares permanentes significativos
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </a-scene>
+    </div>
+
+    <!-- lastarria Volcano Popup-->
+    <div class="pantalla" id="popup_modelo_volcan_lastarria"  >
+        <a-scene embedded vr-mode-ui="enabled: false" renderer="colorManagement: true;">
+
+            <!-- Camera with cursor -->
+            <a-entity id="camera" position="0 2.2 2" camera wasd-controls="enabled: false">
+                <a-entity cursor="fuse: false; rayOrigin: mouse;"
+                        raycaster="objects: [id^='click-point']"
+                        position="0 0 -1"
+                        geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.02"
+                        material="opacity: 0%; shader: flat">
+                </a-entity>
+            </a-entity>
+    
+            <!-- Lights -->
+            <a-entity light="type: ambient; color: #BBB"></a-entity>
+            <a-entity light="type: directional; color: #FFF; intensity: 0.6" position="-0.5 1 1"></a-entity>
+
+            <!-- 3D Model Container -->
+            <a-entity id="model-container">
+                <a-gltf-model id="model" src="#lastarria" 
+                    position="0 0.45 0" scale="1.45 1.45 1.45" rotation="0 0 0">
+                </a-gltf-model>
+            </a-entity>
+    
+            <!-- Assets -->
+            <a-assets>
+                <a-asset-item id="lastarria" src="assets/models/lastarria.glb"></a-asset-item>
+            </a-assets>
+    
+            <!-- Info Cards -->
+            <div class="volcan-infocards">
+                <div class="volcan-grid">
+                    <div class="volcan-card">
+                        <h2>Geología activa y fumarolas persistentes</h2>
+                        <p>
+                            El Lastarria es un estratovolcán pleistocénico-holocénico, 
+                            alcanzando aproximadamente 5.706 m de altura, con varios cráteres alineados y un domo de lava en el flanco norte.
+                        </p>
+                    </div>
+                    <div class="volcan-card empty"></div>
+                    <div class="volcan-card volver-mapa-card">
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <h2 style="text-align: center;">Volver al mapa!</h2>
+                        </div>
+                        <button id="boton_volver_puna">
+                            <img src="assets/images/icons/backarrow.png" id="backarrow_puna" alt="Volver">
+                        </button> 
+                    </div>
+                    <div class="volcan-card">
+                        <h2>Emisiones químicas extremas</h2>
+                        <p>Estudios recientes del Instituto Ckelar Volcanes revelan que el Lastarria es uno de los mayores emisores de arsénico y 
+                            boro del planeta, junto con otros “calcófilos” como cadmio, antimonio, telurio, cobre, 
+                            zinc, talio, plomo y bismuto</p>
+                    </div>
+                    <div class="volcan-card">
+                        <h2>Remoto, pero monitorizado</h2>
+                        <p>Ubicado en una de las zonas más áridas del planeta (desierto de Atacama), 
+                            Lastarria cuenta con clima de montaña extrema (temperaturas bajo –11° C, 
+                            precipitaciones igual o inferiores a 20 mm/año)</p>
+                    </div>
+                    <div class="volcan-card">
+                        <h2>Colapso de flanco y deslizamiento masivo</h2>
+                        <p>
+                            Hace algunos miles de años, su flanco sureste colapsó, 
+                            generando una avalancha de escombros que recorrió hasta 8 km desde un escarpe de aproximadamente 1 km de ancho .
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </a-scene>
+    </div>
+
+    <!-- aracar Volcano Popup-->
+    <div class="pantalla" id="popup_modelo_volcan_aracar"  >
+        <a-scene embedded vr-mode-ui="enabled: false" renderer="colorManagement: true;">
+
+            <!-- Camera with cursor -->
+            <a-entity id="camera" position="0 2.2 2" camera wasd-controls="enabled: false">
+                <a-entity cursor="fuse: false; rayOrigin: mouse;"
+                        raycaster="objects: [id^='click-point']"
+                        position="0 0 -1"
+                        geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.02"
+                        material="opacity: 0%; shader: flat">
+                </a-entity>
+            </a-entity>
+    
+            <!-- Lights -->
+            <a-entity light="type: ambient; color: #BBB"></a-entity>
+            <a-entity light="type: directional; color: #FFF; intensity: 0.6" position="-0.5 1 1"></a-entity>
+
+            <!-- 3D Model Container -->
+            <a-entity id="model-container">
+                <a-gltf-model id="model" src="#aracar" 
+                    position="0 1 0" scale="2 2 2" rotation="0 0 0">
+                </a-gltf-model>
+            </a-entity>
+    
+            <!-- Assets -->
+            <a-assets>
+                <a-asset-item id="aracar" src="assets/models/aracar.glb"></a-asset-item>
+            </a-assets>
+    
+            <!-- Info Cards -->
+            <div class="volcan-infocards">
+                <div class="volcan-grid">
+                    <div class="volcan-card">
+                        <h2>Primer ascenso y hallazgos arqueológicos</h2>
+                        <p>
+                            En abril de 1958, Jorge Cvitanic y alpinistas europeos realizaron la primera ascensión, hallando leña, muros y 
+                            una plataforma embaldosada cerca del cráter; en 1992 y 2001 se registraron suministros rituales hasta los 5 000 m
+                        </p>
+                    </div>
+                    <div class="volcan-card empty"></div>
+                    <div class="volcan-card volver-mapa-card">
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <h2 style="text-align: center;">Volver al mapa!</h2>
+                        </div>
+                        <button id="boton_volver_puna">
+                            <img src="assets/images/icons/backarrow.png" id="backarrow_puna" alt="Volver">
+                        </button> 
+                    </div>
+                    <div class="volcan-card">
+                        <h2>Riesgo volcánico</h2>
+                        <p>Aunque sin erupciones históricas confirmadas, está clasificado como potencialmente activo 
+                            (17° más peligroso de 38 en Argentina), debido a su morfología juvenil y actividad térmica reciente </p>
+                    </div>
+                    <div class="volcan-card">
+                        <h2>Santuario inca de alta montaña</h2>
+                        <p>En su cima (6.095 m) se documentó un sitio ceremonial incaico, 
+                            con círculos de piedra, terrazas e “apachetas”, 
+                            usado para ritos de sacralización del paisaje</p>
+                    </div>
+                    <div class="volcan-card">
+                        <h2>Altura, tipo y cráter con laguna</h2>
+                        <p>
+                            Es un estratovolcán de 6.095 m de altura con un cráter principal bien conservado, 
+                            de 1–1.5 km de diámetro, que a veces contiene una pequeña laguna estacional
+                        </p>    
+                    </div>
+                </div>
+            </div>
+        </a-scene>
+    </div>
+
+    <!-- archibarca Volcano Popup-->
+    <div class="pantalla" id="popup_modelo_volcan_archibarca"  >
+        <a-scene embedded vr-mode-ui="enabled: false" renderer="colorManagement: true;">
+
+            <!-- Camera with cursor -->
+            <a-entity id="camera" position="0 2.2 2" camera wasd-controls="enabled: false">
+                <a-entity cursor="fuse: false; rayOrigin: mouse;"
+                        raycaster="objects: [id^='click-point']"
+                        position="0 0 -1"
+                        geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.02"
+                        material="opacity: 0%; shader: flat">
+                </a-entity>
+            </a-entity>
+    
+            <!-- Lights -->
+            <a-entity light="type: ambient; color: #BBB"></a-entity>
+            <a-entity light="type: directional; color: #FFF; intensity: 0.6" position="-0.5 1 1"></a-entity>
+
+            <!-- 3D Model Container -->
+            <a-entity id="model-container">
+                <a-gltf-model id="model" src="#archibarca" 
+                    position="0 1.1 0" scale="1 1 1" rotation="0 0 0">
+                </a-gltf-model>
+            </a-entity>
+    
+            <!-- Assets -->
+            <a-assets>
+                <a-asset-item id="archibarca" src="assets/models/archibarca.glb"></a-asset-item>
+            </a-assets>
+    
+            <!-- Info Cards -->
+            <div class="volcan-infocards">
+                <div class="volcan-grid">
+                    <div class="volcan-card">
+                        <h2>Complejo volcánico y materiales eruptivos</h2>
+                        <p>
+                            El sitio es notable por la Formación La Torre, un estrato volcánico volcániclástico con capas rojas de ceniza y clastos esféricos (3–10 cm), 
+                            cubierto por flujos piroclásticos blancos y un flujo riolítico de ~30 m de espesor, además de un domo de lava asociado
+                        </p>
+                    </div>
+                    <div class="volcan-card empty"></div>
+                    <div class="volcan-card volver-mapa-card">
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <h2 style="text-align: center;">Volver al mapa!</h2>
+                        </div>
+                        <button id="boton_volver_puna">
+                            <img src="assets/images/icons/backarrow.png" id="backarrow_puna" alt="Volver">
+                        </button> 
+                    </div>
+                    <div class="volcan-card">
+                        <h2>Geoquímica y origen magmático</h2>
+                        <p>Las rocas andesíticas contienen hasta un 40 % de asimilación cortical, 
+                            indicando que parte de ese magma se mezcló con corteza continental.Además, 
+                            Archibarca aportó ignimbritas como parte del complejo Caballo Muerto, lo que evidencia su 
+                            contribución a magmatismo extensivo regional. </p>
+                    </div>
+                    <div class="volcan-card">
+                        <h2>Santuario ritual incaico</h2>
+                        <p>En la cumbre se han documentado estructuras ceremoniales incas, con plataformas rituales 
+                            distinguiendo áreas sagradas y profanas, usado como santuario de altura.
+                            Desafortunadamente, el sitio sufrió daños por huaqueo, afectando parcialmente su conservación</p>
+                    </div>
+                    <div class="volcan-card">
+                        <h2>Mineralización y potencial aurífero</h2>
+                        <p>
+                            Está ubicado en el borde del Salar de Arizaro, 
+                            donde el cono volcánico con sus abanicos aluviales forma una barrera visual entre salares 
+                            (Olaroz, Cauchari).
+                        </p>    
+                    </div>
+                </div>
+            </div>
+        </a-scene>
+    </div>
+
+    <!-- Desde aca son salares--> 
+     
+    <!-- antofalla Salar Popup-->
+    <div class="pantalla" id="popup_modelo_volcan_antofalla" data-zoom-enabled="false" >
+        <a-scene embedded vr-mode-ui="enabled: false" renderer="colorManagement: true;">
+
+            <!-- Camera with cursor -->
+            <a-entity id="camera" position="0 2 2" camera wasd-controls="enabled: false">
+                <a-entity cursor="fuse: false; rayOrigin: mouse;"
+                        raycaster="objects: [id^='click-point']"
+                        position="0 0 -1"
+                        geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.02"
+                        material="opacity: 0%; shader: flat">
+                </a-entity>
+            </a-entity>
+    
+            <!-- Lights -->
+            <a-entity light="type: ambient; color: #BBB"></a-entity>
+            <a-entity light="type: directional; color: #FFF; intensity: 0.6" position="-0.5 1 1"></a-entity>
+
+            <!-- 3D Model Container -->
+            <a-entity id="model-container">
+                <a-gltf-model id="model" src="#antofalla" 
+                    position="0 1.5 -1" scale="0.5 0.5 0.5" rotation="60 0 0">
+                </a-gltf-model>
+            </a-entity>
+    
+            <!-- Assets -->
+            <a-assets>
+                <a-asset-item id="antofalla" src="assets/models/antofalla.glb"></a-asset-item>
+            </a-assets>
+    
+            <!-- Info Cards -->
+            <div class="volcan-infocards">
+                <div class="volcan-grid">
+                    <div class="volcan-card">
+                        <h2>Dimensiones colosales</h2>
+                        <p>
+                            Se extiende por más de 130–150km en longitud y entre 5–15km de ancho,
+                            con una superficie aproximada de 500km² y altitud media de ~3.900m sobre el nivel del mar.
+                        </p>
+                    </div>
+                    <div class="volcan-card empty"></div>
+                    <div class="volcan-card volver-mapa-card">
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <h2 style="text-align: center;">Volver al mapa!</h2>
+                        </div>
+                        <button id="boton_volver_puna">
+                            <img src="assets/images/icons/backarrow.png" id="backarrow_puna" alt="Volver">
+                        </button> 
+                    </div>
+                    <div class="volcan-card">
+                        <h2>Entorno volcánico majestuoso</h2>
+                        <p>Rodeado por volcanes como el activo Volcán Antofalla (6.409m), además del Cerro Lila, 
+                        Cerro Cajeros y otros, muchos de cuya lava más reciente aflora en los bordes del salar </p>
+                    </div>
+                    <div class="volcan-card">
+                        <h2>Microbiología extrema – microbialitos</h2>
+                        <p>En el margen occidental se descubrieron oncoides (microbialitos) — estructuras formadas por comunidades microbianas extremófilas— 
+                            de hasta 15cm de diámetro. Fueron estudiados mediante secuenciación de ARNr 16S para determinar su biodiversidad</p>
+                    </div>
+                    <div class="volcan-card">
+                        <h2>Presión ambiental y conservación</h2>
+                        <p>
+                            El incremento del turismo y el interés por el litio han generado desafíos: impacto en acceso comunitario, contaminación y riesgo para 
+                            frágiles ecosistemas. Por ello, se promueven iniciativas de gestión sostenible lideradas por la comunidad 
+                        </p>    
+                    </div>
+                </div>
+            </div>
+        </a-scene>
+    </div>
+
+    <!-- arizaro Salar Popup-->
+    <div class="pantalla" id="popup_modelo_volcan_arizaro" data-zoom-enabled="false" >
+        <a-scene embedded vr-mode-ui="enabled: false" renderer="colorManagement: true;">
+
+            <!-- Camera with cursor -->
+            <a-entity id="camera" position="0 2 2" camera wasd-controls="enabled: false">
+                <a-entity cursor="fuse: false; rayOrigin: mouse;"
+                        raycaster="objects: [id^='click-point']"
+                        position="0 0 -1"
+                        geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.02"
+                        material="opacity: 0%; shader: flat">
+                </a-entity>
+            </a-entity>
+    
+            <!-- Lights -->
+            <a-entity light="type: ambient; color: #BBB"></a-entity>
+            <a-entity light="type: directional; color: #FFF; intensity: 0.6" position="-0.5 1 1"></a-entity>
+
+            <!-- 3D Model Container -->
+            <a-entity id="model-container">
+                <a-gltf-model id="model" src="#arizaro" 
+                    position="0 2 -1" scale="0.5 0.5 0.5" rotation="60 0 0">
+                </a-gltf-model>
+            </a-entity> 
+    
+            <!-- Assets -->
+            <a-assets>
+                <a-asset-item id="arizaro" src="assets/models/arizaro.glb"></a-asset-item>
+            </a-assets>
+    
+            <!-- Info Cards -->
+            <div class="volcan-infocards">
+                <div class="volcan-grid">
+                    <div class="volcan-card">
+                        <h2>El Cono de Arita: isla en el salar</h2>
+                        <p>
+                            Uno de los símbolos visuales más impactantes es el Cono de Arita, una impresionante geoforma cónica de unos 200 m de altura, 
+                            considerada “el cono natural más perfecto del mundo”; se eleva a 3 689 m sobre el salar
+                        </p>
+                    </div>
+                    <div class="volcan-card empty"></div>
+                    <div class="volcan-card volver-mapa-card">
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <h2 style="text-align: center;">Volver al mapa!</h2>
+                        </div>
+                        <button id="boton_volver_puna">
+                            <img src="assets/images/icons/backarrow.png" id="backarrow_puna" alt="Volver">
+                        </button> 
+                    </div>
+                    <div class="volcan-card">
+                        <h2>Riquezas minerales variadas</h2>
+                        <p>El salar alberga abundantes depósitos de sal, yeso, mármol, hierro, cobre y ónix, además de halita y yeso, explotados en minería a cielo abierto</p>
+                    </div>
+                    <div class="volcan-card">
+                        <h2>Ubicación estratégica en el "Triángulo del Litio"</h2>
+                        <p> Ubicado en un área estratégica para el litio, el salar está siendo evaluado por compañías como 
+                            Lithium Chile y LiTHIUM‑X, con sondeos que han detectado hasta 340 mg/l de litio, 
+                            y se planea una licitación de unas 37 000 ha para su exploración</p>
+                    </div>
+                    <div class="volcan-card">
+                        <h2>Paisaje dinámico, laberinto salino</h2>
+                        <p>Su núcleo de sal tiene un grosor considerable (más de 100 m sin llegar al fondo) y la escasa vegetación, 
+                            las erosiones eólicas creadas por los fuertes vientos (yardangs) generan un paisaje lunar viviente
+                        </p>    
+                    </div>
+                </div>
+            </div>
+        </a-scene>
+    </div>
+
+    <!-- olaroz Salar Popup-->
+    <div class="pantalla" id="popup_modelo_volcan_olaroz" >
+        <a-scene embedded vr-mode-ui="enabled: false" renderer="colorManagement: true;">
+
+            <!-- Camera with cursor -->
+            <a-entity id="camera" position="0 2 2" camera wasd-controls="enabled: false">
+                <a-entity cursor="fuse: false; rayOrigin: mouse;"
+                        raycaster="objects: [id^='click-point']"
+                        position="0 0 -1"
+                        geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.02"
+                        material="opacity: 0%; shader: flat">
+                </a-entity>
+            </a-entity>
+    
+            <!-- Lights -->
+            <a-entity light="type: ambient; color: #BBB"></a-entity>
+            <a-entity light="type: directional; color: #FFF; intensity: 0.6" position="-0.5 1 1"></a-entity>
+
+            <!-- 3D Model Container -->
+            <a-entity id="model-container">
+                <a-gltf-model id="model" src="#olaroz" 
+                    position="0 2 -1" scale="0.5 0.5 0.5" rotation="60 0 0">
+                </a-gltf-model>
+            </a-entity> 
+    
+            <!-- Assets -->
+            <a-assets>
+                <a-asset-item id="olaroz" src="assets/models/olaroz.glb"></a-asset-item>
+            </a-assets>
+    
+            <!-- Info Cards -->
+            <div class="volcan-infocards">
+                <div class="volcan-grid">
+                    <div class="volcan-card">
+                        <h2>Dimensiones y ubicación</h2>
+                        <p>
+                            Situado en el Departamento de Susques (Jujuy), a 3.900 m de altitud, el salar cubre una superficie de aproximadamente 1.600 km², con un tamaño de unos 100 km de largo por 50 km de ancho, 
+                            siendo el segundo más grande de Argentina y el sexto del mundo
+                        </p>
+                    </div>
+                    <div class="volcan-card empty"></div>
+                    <div class="volcan-card volver-mapa-card">
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <h2 style="text-align: center;">Volver al mapa!</h2>
+                        </div>
+                        <button id="boton_volver_puna">
+                            <img src="assets/images/icons/backarrow.png" id="backarrow_puna" alt="Volver">
+                        </button> 
+                    </div>
+                    <div class="volcan-card">
+                        <h2>Gran reserva de litio y potasio</h2>
+                        <p>
+                            Posee reservas estimadas de salmuera con entre 570 y 632 mg/L de litio, lo que equivale a unos 
+                            1,65 millones de toneladas métricas de litio y 13,7 millones de toneladas de potasio
+                        </p>
+                    </div>
+                    <div class="volcan-card">
+                        <h2>Proyecto industrial Cauchari‑Olaroz</h2>
+                        <p> Operado por Sales de Jujuy (Allkem 66,5 %, Toyota 25 %, JEMSE 8,5 %), el complejo inició producción en 2014‑16 y 
+                            tras dos etapas apunta a generar hasta 50 000 toneladas de carbonato de litio al año, 
+                            con una inversión cercana a US $1 000 millones</p>
+                    </div>
+                    <div class="volcan-card">
+                        <h2>Importancia global y desarrollo sostenible</h2>
+                        <p>Parte del Triángulo del Litio, la explotación de salmueras en Olaroz responde al impulso global hacia vehículos eléctricos. Su expansión refleja un crecimiento 
+                            fuerte de capacidades: desde unos 17 500 t anuales en 2023 a potenciales 42 500 t en 2025
+                        </p>    
+                    </div>
+                </div>
+            </div>
+        </a-scene>
+    </div>
+
+    <!-- rincon Salar Popup-->
+    <div class="pantalla" id="popup_modelo_volcan_rincon" >
+        <a-scene embedded vr-mode-ui="enabled: false" renderer="colorManagement: true;">
+
+            <!-- Camera with cursor -->
+            <a-entity id="camera" position="0 2 2" camera wasd-controls="enabled: false">
+                <a-entity cursor="fuse: false; rayOrigin: mouse;"
+                        raycaster="objects: [id^='click-point']"
+                        position="0 0 -1"
+                        geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.02"
+                        material="opacity: 0%; shader: flat">
+                </a-entity>
+            </a-entity>
+    
+            <!-- Lights -->
+            <a-entity light="type: ambient; color: #BBB"></a-entity>
+            <a-entity light="type: directional; color: #FFF; intensity: 0.6" position="-0.5 1 1"></a-entity>
+
+            <!-- 3D Model Container -->
+            <a-entity id="model-container">
+                <a-gltf-model id="model" src="#rincon" 
+                    position="0 2 -1" scale="0.5 0.5 0.5" rotation="60 0 0">
+                </a-gltf-model>
+            </a-entity> 
+    
+            <!-- Assets -->
+            <a-assets>
+                <a-asset-item id="rincon" src="assets/models/rincon.glb"></a-asset-item>
+            </a-assets>
+    
+            <!-- Info Cards -->
+            <div class="volcan-infocards">
+                <div class="volcan-grid">
+                    <div class="volcan-card">
+                        <h2>El Rincón visto por satélites</h2>
+                        <p>
+                            Desde el espacio, el Salar del Rincón se ve como una mancha blanca que cambia lentamente de forma y color. 
+                            Las imágenes satelitales muestran cómo las lagunas aparecen y desaparecen con el tiempo. Estos cambios sirven como 
+                            indicadores naturales del clima, los niveles de agua subterránea y hasta la salud del ecosistema.
+                        </p>
+                    </div>
+                    <div class="volcan-card empty"></div>
+                    <div class="volcan-card volver-mapa-card">
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <h2 style="text-align: center;">Volver al mapa!</h2>
+                        </div>
+                        <button id="boton_volver_puna">
+                            <img src="assets/images/icons/backarrow.png" id="backarrow_puna" alt="Volver">
+                        </button> 
+                    </div>
+                    <div class="volcan-card">
+                        <h2>Sal líquida: el laboratorio natural del futuro</h2>
+                        <p>
+                            Las salmueras del Rincón no solo contienen litio: son un caldo químico único que incluye boro, magnesio, sodio y potasio. 
+                            Algunos de estos elementos tienen aplicaciones en medicina, computación cuántica y tecnología espacial.
+                        </p>
+                    </div>
+                    <div class="volcan-card">
+                        <h2>Mitos y señales del altiplano</h2>
+                        <p> Las comunidades indígenas relatan que el salar “respira” y “canta” cuando cambia el clima. El viento que sopla entre las rocas genera silbidos naturales, y el eco sobre la sal suena como tambores lejanos. 
+                            Algunos pastores dicen que esos sonidos son señales de los “apus”, los espíritus de la montaña.</p>
+                    </div>
+                    <div class="volcan-card">
+                        <h2>Del desierto al celular: el viaje del litio</h2>
+                        <p>Un grano de sal del Salar del Rincón puede terminar dentro de una batería que alimenta tu teléfono o un satélite. La cadena de valor del litio atraviesa laboratorios, puertos y fábricas de todo el mundo. Comienza aquí, en un lugar donde no hay casi nada… 
+                            pero se produce lo que el mundo más necesita.
+                        </p>    
+                    </div>
+                </div>
+            </div>
+        </a-scene>
+    </div>
+
+    <!-- Map Container (initially hidden) -->
+    <div class="map-container">
+        <a href="main.html" id="back-to-main-btn" style="position: absolute; top: 20px; right: 20px; z-index: 1000; height:300px; width:1000px;">Volver al Menú</a>
+        <div class="map-image" style="background-image: url('assets/images/BGs/puna.jpg')">
+            
+            <!-- Volcanes-->
+
+            <!-- Socompa -->
+            <button class="interactive-button" id="socompa_btn" data-x="17%" data-y="40%" data-popup-target="#popup_modelo_volcan_socompa">
+                <img src="assets/images/icons/Interactivo.png" alt="Punto 1">
+            </button>
+
+            <!-- Quehuar -->
+            <button class="interactive-button" id="quehuar_btn" data-x="53%" data-y="42%" data-popup-target="#popup_modelo_volcan_quehuar">
+                <img src="assets/images/icons/Interactivo.png" alt="Punto 2">
+            </button>
+
+            <!-- Acay -->
+            <button class="interactive-button" id="acay_btn" data-x="69%" data-y="49%" data-popup-target="#popup_modelo_volcan_acay">
+                <img src="assets/images/icons/Interactivo.png" alt="Punto 2">
+            </button>
+
+            <!-- Llullaillaco -->
+            <button class="interactive-button" id="llullaillaco_btn" data-x="4%" data-y="60%" data-popup-target="#popup_modelo_volcan_llullaillaco">
+                <img src="assets/images/icons/Interactivo.png" alt="Punto 2">
+            </button>
+
+            <!-- Lastarria -->
+            <button class="interactive-button" id="lastarria_btn" data-x="7%" data-y="77%" data-popup-target="#popup_modelo_volcan_lastarria">
+                <img src="assets/images/icons/Interactivo.png" alt="Punto 2">
+            </button>
+            
+            <!-- Aracar -->
+            <button class="interactive-button" id="aracar_btn" data-x="24%" data-y="42%" data-popup-target="#popup_modelo_volcan_aracar">
+                <img src="assets/images/icons/Interactivo.png" alt="Punto 1">
+            </button>
+
+            <!-- Archibarca -->
+            <button class="interactive-button" id="archibarca_btn" data-x="22%" data-y="80%" data-popup-target="#popup_modelo_volcan_archibarca">
+                <img src="assets/images/icons/Interactivo.png" alt="Punto 1">
+            </button>
+
+            <!--Salares-->
+
+            <!-- Antofalla -->
+            <button class="interactive-button" id="antofalla_btn" data-x="33%" data-y="83%" data-popup-target="#popup_modelo_volcan_antofalla">
+                <img src="assets/images/icons/play.png" alt="Punto 1">
+            </button>
+
+            <!-- Arizaro -->
+            <button class="interactive-button" id="arizaro_btn" data-x="24%" data-y="60%" data-popup-target="#popup_modelo_volcan_arizaro">
+                <img src="assets/images/icons/play.png" alt="Punto 1">
+            </button>
+
+            <!-- Olaroz -->
+            <button class="interactive-button" id="olaroz_btn" data-x="53%" data-y="11%" data-popup-target="#popup_modelo_volcan_olaroz">
+                <img src="assets/images/icons/play.png" alt="Punto 1">
+            </button>
+
+            <!-- Rincon -->
+            <button class="interactive-button" id="rincon_btn" data-x="43%" data-y="33%" data-popup-target="#popup_modelo_volcan_rincon">
+                <img src="assets/images/icons/play.png" alt="Punto 1">
+            </button>
+
+        </div>
+    </div>
+
+    <script src="map.js"></script>
+    <script src="popup-scene.js"></script>
+</body>
+</html>

@@ -1,0 +1,250 @@
+/* General Styles */
+body {
+    margin: 0;
+    font-family: sans-serif;
+    background-color: #3a2d27;
+    color: #4f4a45;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.instructions-container {
+    height: 50%;
+}
+
+.screen {
+    display: none;
+    width: 100%;
+    height: 100%;
+}
+
+.screen.active {
+    display: block;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    font-family: inherit;
+}
+
+/* Start Screen */
+#start-screen .start-container {
+    display: flex;
+    width: 70%;
+    height: 55vh;
+    margin: 5vh auto;
+    background-color: #5d4a40;
+    border-radius: clamp(1rem, 2vw, 3rem);
+    overflow: hidden;
+}
+
+#start-screen .start-image {
+    flex-basis: 50%;
+    background: url('https://i.imgur.com/8a1ZfD4.png') no-repeat center center;
+    background-size: cover;
+}
+
+#start-screen .start-info {
+    flex-basis: 50%;
+    padding: clamp(2rem, 6vw, 8rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #f3e9e0;
+    position: relative;
+}
+
+#start-screen h1 {
+    font-size: clamp(2.8rem, 6vw, 8rem);
+    font-weight: bold;
+    line-height: 1.1;
+    margin-bottom: clamp(1rem, 4vw, 4rem);
+}
+
+#start-screen p {
+    font-size: clamp(1.4rem, 2.5vw, 2.5rem);
+    max-width: 80%;
+    margin-bottom: clamp(2rem, 6vw, 6rem);
+}
+
+#start-screen .start-buttons {
+    display: flex;
+    gap: clamp(1rem, 2vw, 3rem);
+    align-items: center;
+    align-self: flex-start;
+}
+
+#start-screen #start-btn,
+#start-screen #back-to-main-btn {
+    background-color: #f3e9e0;
+    color: #5d4a40;
+    padding: clamp(1rem, 3vw, 3rem) clamp(2rem, 5vw, 5rem);
+    font-size: clamp(1.5rem, 2.5vw, 2.5rem);
+    font-weight: bold;
+    border-radius: clamp(1rem, 2vw, 2rem);
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+#start-screen #back-to-main-btn {
+    background-color: #d1c7c0;
+}
+
+#start-screen #start-btn:hover,
+#start-screen #back-to-main-btn:hover {
+    background-color: #ffffff;
+}
+
+#start-screen .logo {
+    position: absolute;
+    bottom: clamp(2rem, 5vw, 6rem);
+    right: clamp(2rem, 5vw, 6rem);
+}
+
+#start-screen .logo img {
+    width: clamp(100px, 20vw, 400px);
+}
+
+/* Game Screen */
+#game-screen {
+    padding: clamp(1rem, 3vw, 4rem);
+    box-sizing: border-box;
+}
+
+.game-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #c8bca9;
+    font-size: clamp(2rem, 5vw, 6rem);
+    border-radius: clamp(1rem, 2vw, 3rem);
+    margin-bottom: clamp(2rem, 4vw, 6rem);
+}
+
+.game-header .home-btn {
+    font-size: clamp(2rem, 5vw, 5rem);
+    background: none;
+}
+
+.game-header .timer-display {
+    font-size: clamp(2rem, 4vw, 4rem);
+    font-weight: bold;
+}
+
+.game-header #ready-btn {
+    background-color: #e67e22;
+    color: white;
+    padding: clamp(1rem, 3vw, 3rem) clamp(2rem, 5vw, 5rem);
+    border-radius: clamp(1rem, 2vw, 2rem);
+    font-size: clamp(1.8rem, 3vw, 3rem);
+    font-weight: bold;
+}
+
+/* Game Board */
+.game-board {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: clamp(1rem, 2vw, 3rem);
+    padding: clamp(1rem, 3vw, 4rem);
+    background-color: #5d4a40;
+    border-radius: clamp(1rem, 2vw, 3rem);
+}
+
+/* Cards */
+.card {
+    aspect-ratio: 2 / 3;
+    background-color: #fff;
+    border-radius: clamp(1rem, 2vw, 2rem);
+    cursor: pointer;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+    transform: rotateY(0deg);
+}
+
+.card.flipped {
+    transform: rotateY(180deg);
+}
+
+.card-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: clamp(1rem, 2vw, 2rem);
+}
+
+.card-front {
+    background-color: #e0d1bc;
+    padding: clamp(1rem, 2vw, 2rem);
+    box-sizing: border-box;
+}
+
+.card-front img {
+    max-width: 80%;
+    max-height: 60%;
+    object-fit: contain;
+}
+
+.card-front .card-name {
+    margin-top: clamp(1rem, 2vw, 2rem);
+    font-weight: bold;
+    font-size: clamp(1rem, 2vw, 2rem);
+}
+
+.card-back {
+    background: url('assets/images/cards/green.png') no-repeat center center;
+    background-size: cover;
+    transform: rotateY(180deg);
+}
+
+/* Victory Popup */
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup.active {
+    display: flex;
+}
+
+.popup-content {
+    background-color: white;
+    padding: clamp(2rem, 6vw, 6rem);
+    border-radius: clamp(1rem, 3vw, 3rem);
+    text-align: center;
+}
+
+.popup-content h2 {
+    font-size: clamp(2.5rem, 5vw, 6rem);
+    color: #e67e22;
+    margin-bottom: clamp(1rem, 2vw, 2rem);
+}
+
+.popup-content p {
+    font-size: clamp(1.2rem, 2.5vw, 2.5rem);
+}
+
+.popup-content #play-again-btn {
+    background-color: #e67e22;
+    color: white;
+    padding: clamp(1rem, 3vw, 3rem) clamp(2rem, 5vw, 5rem);
+    border-radius: clamp(1rem, 2vw, 2rem);
+    font-size: clamp(1.5rem, 2.5vw, 2.5rem);
+    margin-top: clamp(1rem, 2vw, 2rem);
+}

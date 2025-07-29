@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>title</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js"></script>
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+</head>
+<body>
+    <!--Pantalla principal y menu--> 
+    <div class="pantalla fade" id="pantalla_titulo">
+        <div id="overlay"></div>
+        <div class="titulo-contenedor">
+            <h1 id="MusReg"><span class="titulo-arriba">MUSEO REGIONAL</span><br><span class="titulo-abajo">ANDINO</span></h1>
+            <button class="boton_entrar" id="boton_ingreso">Entrar</button>
+        </div>
+        <img src='assets/images/icons/logomus.png' id="logomus" />
+    </div>
+
+    <!--Pantalla de menu-->
+    <div class="pantalla fade" id="pantalla_menu">
+        <div id="overlay"></div>
+        <div class="menu-grilla">
+            <a href="map.html">
+                <button class="menu-btn geologia_btn" id="geo_btn">
+                <div class="content">
+                    <p class="title">Geología</p>
+                </div>
+                <img src="assets/icons/geologiabtn.jpg" alt="Geología">
+                </button>
+            </a>
+            <button class="menu-btn ramal_btn" id="ramal_btn">
+                <div class="content">
+                    <p class="title">Ramal C-14</p>
+                </div>
+                <img src="assets/icons/ramalbtn.jpg" alt="Ramal C-14">
+            </button>
+            <button class="menu-btn juegos" id="juegos_btn">
+                <div class="content">
+                    <p class="title">Juegos</p>
+                </div>
+                <img src="assets/icons/juegosbtn.jpg" alt="Juegos">
+            </button>
+            <button class="menu-btn chaccu_btn" id="chaccu_btn">
+                <div class="content">
+                    <p class="title">Chaccu</p>
+                </div>
+                <img src="assets/icons/chaccubtn.JPG" alt="Chaccu">
+            </button>
+        </div>
+        <img src='assets/images/icons/logomus.png' id="logomus" />
+    </div>
+    
+    <!--Pantallas del Ramal 14-->
+    <div class="pantalla fade" id="pantalla_ramal_1">
+        <div class="overlay_ramal"></div>
+        <div class="ramal_contenedor">
+            <h1 id="ramal_titulo"><span id="titulo_ramal">Ramal C-14</span><br><span id="subtitulo_ramal">¿Te imaginás un tren que viaja por las montañas, a más de 4.000 metros de altura?</span></h1>
+            <h2 id="ramal_texto">Ese tren existe, y su viaje  lo realiza en  un tramo especial del  Ramal C14. Este ramal es una obra de ingeniería muy importante, construida hace más de 80 años para unir Argentina con Chile. El mismo esta conformado por   túneles, puentes y hasta un viaducto gigante.
+                Hoy, se desplaza el famoso Tren a las Nubes, uno de los trenes más altos del mundo.
+                </h2>
+        </div>
+        <div class="botones_ramal">
+            <button class="boton_historia_ramal" id="boton_historia_ramal">Historia</button>
+            <button class="boton_tren_a_las_nubes" id="boton_tren_a_las_nubes">Tren</button>
+        </div>
+
+        <button id="boton_volver_ramal">
+            <img src="assets/images/icons/backarrow.png" id="backarrow" alt="">
+        </button>        
+    </div>
+
+    <div class="pantalla fade" id="pantalla_ramal_2">
+        <h2 class="titulo_ramal_2">Historia, presente y futuro del tren <br>trasandino de Salta</h2>
+        <div class="seccion_columnas">
+            <div class="contenedor-columnas">
+            <!-- Columna 1: Carrusel vertical --> 
+                <div class="columna columna-carrusel">
+                    <div class="carrusel-vertical">
+                        <img src="assets/images/icons/photo_1.jpg" class="miniatura" alt="Imagen 1">
+                        <img src="assets/images/icons/photo_2.jpg" class="miniatura" alt="Imagen 2">
+                        <img src="assets/images/icons/photo_3.jpg" class="miniatura" alt="Imagen 3">
+                        <img src="assets/images/icons/photo_4.jpg" class="miniatura" alt="Imagen 4">
+                        <img src="assets/images/icons/photo_5.jpg" class="miniatura" alt="Imagen 5">
+                        <img src="assets/images/icons/photo_6.jpg" class="miniatura" alt="Imagen 6">
+                        <img src="assets/images/icons/photo_7.jpg" class="miniatura" alt="Imagen 7">
+                        <img src="assets/images/icons/photo_8.jpg" class="miniatura" alt="Imagen 8">
+                        <!-- Más miniaturas -->
+                    </div>
+                </div>
+            <!-- Columna 2: Imagen grande -->
+                <div class="columna columna-imagen">
+                    <img src="assets/images/icons/photo_1.jpg" id="imagen-grande" class="imagen-grande" alt="Imagen seleccionada">
+                </div>
+            <!-- Columna 3: Texto estático -->
+                <div class="columna columna-texto">
+                    <div class="texto-estatico">
+                        <p>
+                            El Ramal C14 es una de las obras de ingeniería más  asombrosa del siglo XX  en la provincia de Salta. El mismo se construyó para lograr el desarrollo integrado y económico con Chile y el pacifico. 
+                            La construcción inicio en el año 1921 bajo la dirección del Ing. Richard F. Maury y finalizó en1948.
+                            El Ramal atraviesa una geografía diversa, lo que significó un desafío en su construcción  y una gran hazaña para los técnicos y obreros que debieron enfrentar  las condiciones climáticas adversas. La Obra se hizo a pala, pico, barretìn y con dinamita y se destacan la construcción de más de 1.400 curvas, 2 zigzag o retrocesos y 2 rulos cerrados, 21 túneles, 13 viaductos, 31 puentes, 9 cobertizos y 93 acantarillas-bóvedas.
+                            La obra más sorprendente la constituye el viaducto La Polvorilla. 
+                            Actualmente y en un tramo especial opera el Tren a las Nubes dedicado al transporte de turistas.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>  
+        <button id="boton_volver_ramal_2">
+            <img src="assets/images/icons/backarrow.png" id="backarrow_ramal_2" alt="">
+        </button>       
+    </div>
+
+    <div class="pantalla fade" id="pantalla_ramal_3">
+        <h2 class="titulo_ramal_3">Tren a las nubes</h2>
+            <div class="contenedor-columnas-tren">
+                <!-- Columna 1: Imagen estática -->
+                <div class="columna-imagen-tren">
+                    <img src="assets/images/BGs/titulo_BG.jpg" class="imagen-tren" alt="Tren a las nubes">
+                </div>
+                <!-- Columna 2: Texto estático -->
+                <div class="columna-texto-tren">
+                    <div class="texto-tren">
+                        <p>
+                            El Tren a las Nubes es uno de los ferrocarriles más altos del mundo y un emblema del turismo en Salta. Parte desde San Antonio de los Cobres y llega al famoso Viaducto La Polvorilla, a más de 4.200 metros sobre el nivel del mar.
+                            El  tren  es un atractivo turístico que permite a los visitantes disfrutar de paisajes imponentes, montañas singulares  y disfrutar de una  experiencia única  “viajar entre las nubes”. En un recorrido inolvidable combina historia, ingeniería y cultura andina.
+                            Hoy, el Tren a las Nubes sigue siendo símbolo del norte argentino y conecta a los viajeros con la inmensidad de la Puna.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <button id="boton_volver_ramal_3">
+                <img src="assets/images/icons/backarrow.png" id="backarrow_ramal_3" alt="">
+            </button> 
+    </div>
+
+    <!--Pantallas del Chaccu-->
+    <div class="pantalla fade" id="pantalla_chaccu">
+        <h2 class="titulo_chaccu">Chaccu</h2>
+        <h2 class="subtitulo_chaccu">Estacion Expermental Agroindustrial <br> INTA -- San Antonio de los Cobres</h2>
+
+        <button class="boton_chaccu" id="boton_popup_1"> <img src="assets/images/icons/Interactivo.png"></button>
+        <button class="boton_chaccu" id="boton_popup_2"> <img src="assets/images/icons/Interactivo.png"></button>
+        <button class="boton_chaccu" id="boton_popup_3"> <img src="assets/images/icons/Interactivo.png"></button>
+        <button class="boton_chaccu" id="boton_popup_4"> <img src="assets/images/icons/Interactivo.png"></button>
+        <button class="boton_chaccu" id="boton_popup_5"> <img src="assets/images/icons/play.png"></button>
+        <button class="boton_chaccu" id="boton_popup_6"> <img src="assets/images/icons/play.png"></button>
+        <button class="boton_chaccu" id="boton_popup_7"> <img src="assets/images/icons/play.png"></button>
+
+        <div class="popup" id="popup_chaccu_1">
+            <h1 class="titulo_popup_chaccu">Potreros</h1>
+            <div class="contenedor-columnas-popup">
+                <!-- Columna 2: Texto -->
+                <div class="columna-texto-popup">
+                    <p class="texto-popup">
+                        Las instalaciones constan de seis potreros destinados a la cría de vicuñas, los cuales están delimitados por alambrados de 10 hilos de alambre liso 16/14 de mediana resistencia, galvanizado.
+                        Cada alambrado tiene 7 trabillas por claro y postes ubicados cada 10 metros, con una altura de 2,20 metros. Además, cuentan con esquineros reforzados y torniquetes cada 200 metros para garantizar la correcta tensión de los alambres.
+                        Las instalaciones disponen de aguadas naturales y bebederos, y están diseñadas para minimizar el estrés de los animales.
+                    </p>
+                </div>
+                <!-- Columna 1: Imagen -->
+                <div class="columna-imagen-popup">
+                    <img src="assets/images/BGs/potreros.png" class="imagen-popup" alt="Mapa de potreros">
+                </div>
+            </div>
+        </div>
+        <div class="popup" id="popup_chaccu_2">
+            <h1 class="titulo_popup_chaccu">Manejo de Vicunas</h1>
+            <div class="contenedor-columnas-popup">
+                <!-- Columna 2: Texto -->
+                <div class="columna-texto-popup">
+                    <p class="texto-popup">
+                        En otono,las crías tienen entre 4 y 5 meses y ya son menos vulnerables al manejo. 
+                        Realizamos actividades como arreo, captura, control sanitario,  identificación y extracción de muestras para estudios. 
+                        Todo esto se hace in un ambiente controlado para evitarles estrés.<br>
+                        Durante la primavera, las vicuñas se encuentran en su 
+                        último tercio de  gestación. Las temperaturas suben y la oferta alimenticia aumenta, lo  que facilita el manejo y reduce el 
+                        riesgo de aborto en las hembras  preñadas. Se realizan esquilas, control sanitario y monitoreo  post-captura
+                    </p>
+                </div>
+                <!-- Columna 1: Imagen -->
+                <div class="columna-imagen-popup">
+                    <img src="assets/images/BGs/arreo.png" class="imagen-popup" alt="Mapa de potreros">
+                </div>
+            </div>
+        </div>
+        <div class="popup" id="popup_chaccu_3">
+            <h1 class="titulo_popup_chaccu">Manejo de Vicunas</h1>
+            <div class="contenedor-filas-popup">
+                <!-- Columna 1: Texto -->
+                <div class="fila-texto-popup">
+                    <p class="texto-popup">
+                        El bienestar de las vicuñas no termina después del manejo. Realizamos un monitoreo post-captura en los días siguientes, 
+                        recorriendo los potreros para observar el comportamiento de los animales y detectar cualquier  
+                        posible problema de salud. Además, registramos datos cruciales como el  peso, la condición corporal y la calidad de la fibra.
+                    </p>
+                </div>
+                <!-- Columna 2: Imagen -->
+                <div class="fila-imagen-popup">
+                    <img src="assets/images/BGs/monitoreo.jpeg" class="imagen-popup-tabla" alt="Tabla de censo de vicuñas">
+                </div>
+            </div>
+        </div>
+        <div class="popup" id="popup_chaccu_4">
+            <h1 id="titulo-popup-4">Arreo, Esquila y Más</h1>
+            <div class="main-content-popup-4">
+                <div class="text-popup-4">
+                    <p>
+                    El proceso de arreo es realizado con un equipo de operarios entrenados, quienes, utilizando una lona de arpillera sintética, guían a las vicuñas hacia los corrales de manera tranquila y ordenada. A partir de ahí, los animales son evaluados, identificados y, si corresponde, esquilados de forma técnica y cuidadosa. La esquila se realiza con herramientas especializadas y siguiendo una técnica que respeta las características del vellón de vicuña.
+                    </p>
+                </div>
+                <div class="image-popup-4">
+                    <img src="assets/images/BGs/arreo.jpeg" alt="Arreo de vicuñas">
+                </div>
+            </div>
+            <div class="bottom-text-popup-4">
+                <p>
+                    Se realiza "arreo con lona a pie". El método consiste en formar una línea de arreo con x número de personas que sostienen una lona de arpillera sintética de 1.2 m de alto, desplegada hasta 500m de largo, abarcando el ancho del potrero en el que se realiza la práctica, o el ancho de la zona a trabajar en ese momento. El arreo se realiza a paso moderado, cuidando de mantener la lona tensa, a modo de barrera para evitar la fuga de animales. Para ello, dos operario que se desplazan en un tractor que arrastra un carro, avanzan a la par de la línea de arreo liberando o recogiendo lona. En los extremos de la línea se ubican los coordinadores de arreo quienes, comunicados entre sí mediante transmisores portátiles, son quienes indican la dirección y velocidad de marcha.
+                </p>
+            </div>
+        </div>   
+        <div class="popup" id="popup_chaccu_5">
+            <div class="video-container-popup-5">
+                <video controls>
+                <source src="assets/Videos/locura.mp4" type="video/mp4">
+                Tu navegador no soporta el elemento de video.
+                </video>
+            </div>
+            <p class="description-popup-5">
+                Los potreros de vicuñas están integrados en un ecosistema único compuesto por estepas arbustivas, pastizales de esporal y vegas de chillagua. Cada uno de estos ambientes tiene características propias, que favorecen la selección dietaria de las vicuñas y su bienestar. Aquí, las vicuñas tienen acceso a alimentos y espacios adecuados para su desarrollo.
+            </p>
+        </div>
+        <div class="popup" id="popup_chaccu_6">
+            <h1 class="titulo-popup-6">Esquilado de Vicunas - CHACCU</h1>
+            <video id="video-popup-6" controls>
+                <source src="assets/Videos/esquilado.mp4" type="video/mp4">
+                Tu navegador no soporta el elemento de video.
+            </video>
+        </div>
+        <div class="popup" id="popup_chaccu_7">
+            <h1 class="titulo-popup-7">Arreo de Vicunas - CHACCU</h1>
+            <video id="video-popup-7" controls>
+                <source src="assets/Videos/arreo.mp4" type="video/mp4">
+                Tu navegador no soporta el elemento de video.
+            </video>
+
+        </div> 
+
+        <button id="boton_volver_chaccu" style="background: none; border: none; padding: 0;">
+            <img src="assets/images/icons/backarrow.png" id="backarrow_chaccu" style="display: block;">
+        </button> 
+    </div>
+
+
+    <!--Pantallas de los Juegos-->
+    <div class="pantalla fade" id="pantalla_menu_juegos">
+        <div class="menu-juegos-container">
+            <div class="juegos-header">
+                <h1 class="juegos-titulo">Juegos Interactivos</h1>
+            </div>
+            
+            <div class="juegos-grilla">
+                <a href="memoria.html" class="juego-card memoria" id="boton_juego_memoria">
+                    <div class="content">
+                        <p class="title">Memoria</p>
+                    </div>
+                    <img src="assets/images/icons/memoriaicon.JPG" alt="Juego de Memoria">
+                </a>
+                
+                <a href="silu.html" class="juego-card duplicados" id="boton_juego_duplicados">
+                    <div class="content">
+                        <p class="title">Duplicados</p>
+                    </div>
+                    <img src="assets/images/icons/bioicon.JPG" alt="Juego de Duplicados">
+                </a>
+                
+                <button class="juego-card ordenar" id="boton_juego_ordenar">
+                    <div class="content">
+                        <p class="title">Ordenar Hechos</p>
+                    </div>
+                    <img src="assets/images/icons/ordenaricon.JPG" alt="Juego de Ordenar">
+                </button>
+            </div>
+            <button id="boton_volver_juegos" class="boton-volver">
+                <img src="assets/images/icons/backarrow.png" alt="Volver">
+            </button>
+        </div>
+    </div>
+
+    
+    </body>
+
+</html>

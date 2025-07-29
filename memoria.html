@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego de Memoria</title>
+    <link rel="stylesheet" href="memoria.css">
+</head>
+<body>
+
+    <!-- Pantalla de Inicio -->
+    <div id="start-screen" class="screen active">
+        <div class="start-container">
+            <div class="start-image">
+                <!-- La imagen de los niños va aquí como fondo en CSS -->
+            </div>
+            <div class="start-info">
+                <h1>ENCUENTRA<br>LA PAREJA</h1>
+                <p>Memoriza todas las cartas y adivina la posición de cada pareja. ¡Házlo lo más rápido posible y registra tu mejor marca!</p>
+                <div class="start-buttons">
+                    <button id="start-btn">EMPEZAR</button>
+                    <a href="main.html" id="back-to-main-btn">VOLVER</a>
+                </div>
+                <div class="logo">
+                    <img src="assets/images/icons/logomus.png" alt="Logo Museo">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pantalla de Juego -->
+    <div id="game-screen" class="screen">
+        <div class="game-header">
+            <div class="timer-display">Memoriza las posiciones</div>
+            <button id="ready-btn">ESTOY LISTO</button>
+        </div>
+        <div class="game-board" id="game-board">
+            <!-- Las cartas se generarán con JavaScript -->
+        </div>
+    </div>
+
+    <!-- Popup de Victoria -->
+    <div id="victory-popup" class="popup">
+        <div class="popup-content">
+            <h2>¡FELICIDADES!</h2>
+            <p>Has encontrado todas las parejas.<br>Volviendo al menú principal...</p>
+        </div>
+    </div>
+
+    <script src="memoria.js"></script>
+</body>
+</html>

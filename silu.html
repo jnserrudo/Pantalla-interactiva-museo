@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dobles: Flora y Fauna</title>
+    <link rel="stylesheet" href="silu.css">
+</head>
+<body>
+
+    <!-- Pantalla de Inicio -->
+    <div id="start-screen" class="screen active">
+        <div class="top-nav">
+            <button class="nav-btn undo-btn">⟲</button>
+            <button class="nav-btn menu-btn">☰</button>
+        </div>
+        <div class="start-container">
+            <div class="start-text">
+                <p>¡Encuentra al doble<br>lo antes posible!</p>
+                <h1>DOBLES:<br>FLORA Y FAUNA</h1>
+                <button id="play-btn">JUGAR</button>
+            </div>
+            <div class="start-image-container">
+                <!-- Las imágenes de la derecha se posicionarán aquí -->
+            </div>
+        </div>
+        <img src="assets/images/icons/logomus.png" alt="Logo Museo" class="logo">
+    </div>
+
+    <!-- Pantalla de Instrucciones -->
+    <div id="instructions-screen" class="screen">
+        <div class="instructions-container">
+            <div class="instructions-header">
+                <div class="dots"></div>
+                <h2>DOBLES</h2>
+                <div class="stars">★★★★★</div>
+            </div>
+            <div class="instructions-body">
+                <p>Las reglas son sencillas:</p>
+                <p>Busca al animal que está repetido, pero, date prisa que el tiempo corre. Intenta llegar al final lo más rápido posible. ¡Suerte!</p>
+                <h3>¿PREPARADO?</h3>
+                <button id="ready-btn">¡YA!</button>
+            </div>
+            <img src="assets/images/icons/logomus.png" alt="Logo Museo" class="logo">
+        </div>
+    </div>
+
+    <!-- Pantalla de Juego -->
+    <div id="game-screen" class="screen">
+        <div class="game-header">
+            <h2>DOBLES</h2>
+        </div>
+        <div class="game-area">
+            <div id="circle-1" class="image-circle"></div>
+            <div class="score-counter">0 / 5</div>
+            <div id="circle-2" class="image-circle"></div>
+        </div>
+        <img src="assets/images/icons/logomus.png" alt="Logo Museo" class="logo">
+    </div>
+
+    <!-- Popup de Victoria -->
+    <div id="victory-popup" class="screen">
+        <div class="popup-content">
+            <h2>¡GANASTE!</h2>
+            <p>¡Felicidades, encontraste 5 siluetas repetidas!</p>
+            <button id="play-again-btn">Jugar de Nuevo</button>
+        </div>
+    </div>
+
+    <script src="silu.js"></script>
+</body>
+</html>

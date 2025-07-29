@@ -1,0 +1,209 @@
+/* Basic setup for a full-screen experience */
+body, html {
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Prevents scrollbars on the body */
+    margin: 0;
+    padding: 0;
+    background-color: #000;
+}
+/* fuentes */
+@font-face {
+    font-family: 'Museo300';
+    src:url(assets/fonts/museo-sans-300.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Museo500';
+    src: url(assets/fonts/museo-sans-500.otf) format('opentype');
+}
+
+
+/*General*/
+:root{
+--fuente-500: 'Museo500', sans-serif;
+--fuente-300: 'Museo300', sans-serif;
+--color-marron-primario:hsl(35, 37%, 81%);
+--color-negro:#000000;
+}
+/* The viewport for our map */
+.map-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    cursor: grab; /* Shows that the area is draggable */
+}
+
+.map-container:active {
+    cursor: grabbing; /* Cursor style when dragging */
+}
+
+/* The draggable background image */
+.map-image {
+    position: absolute;
+    width: 200%; /* Larger size allows for dragging */
+    height: 200%; /* Increased height for more vertical scroll */
+    background-size: cover;
+    background-position: center;
+    will-change: transform; /* Performance optimization */
+}
+
+/* --- Botones interactivos (pines sobre el mapa) --- */
+.interactive-button {
+    position: absolute;
+    width: 6.5vw;
+    height: 11.5vh;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    z-index: 10;
+    will-change: transform;
+}
+
+.interactive-button img {
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Makes the button clickable, not the image */
+}
+
+/* Video styles */
+#intro_geo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1000;
+    background: #000;
+}
+
+/* Fade out animation for the video */
+.fade-out {
+    animation: fadeOut 1s forwards;
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; visibility: hidden; }
+}
+
+/* --- Volcano Popup Styles --- */
+.pantalla {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #FFFFFF; /* White background */
+    z-index: 2000;
+    display: none; /* Hidden by default */
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.pantalla.visible {
+    display: block;
+    opacity: 1;
+}
+
+/* --- Cards de información --- */
+.volcan-infocards {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 1vw;
+    box-sizing: border-box;
+    color: #333;
+    z-index: 10;
+}
+
+.volcan-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.8vw;
+    width: 100%;
+    margin: 0 auto;
+    grid-row-gap: 45vh;
+}
+
+.volcan-card {
+    background: hsl(35, 37%, 81%);
+    padding: 0.65vw;
+    border-radius: 0.3vw;
+    height: 23vh;
+}
+
+.volcan-card h2 {
+    font-family: var(--fuente-500);
+    margin-top: 0;
+    font-size: clamp(2rem, 2.8vw, 4rem);
+}
+
+.volcan-card p {
+    font-family: var(--fuente-300);
+    font-size: clamp(1.4rem, 1.8vw, 2.6rem);
+}
+
+
+.volcan-card.empty {
+    background: transparent;
+}
+
+#boton_volver_puna {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+/* --- Flecha de regreso --- */
+#backarrow_puna {
+    width: 1.3vw;
+    height: 2.3vh;
+}
+/* --- Botón volver al menú --- */
+#back-to-main-btn {
+    border: none;
+    border-radius: 0.3vw;
+    box-shadow: 0 0.03vw 0.07vw rgba(0, 0, 0, 0.12),
+                0 0.03vw 0.05vw rgba(0, 0, 0, 0.24);
+    transition: all 300ms;
+    cursor: pointer;
+
+    background-color: #4a6fa5;
+    color: #fff;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: 'Museo500', sans-serif;
+    font-size: 2.1vw;
+    text-shadow: 0 0.05vw 0.1vw rgba(0, 0, 0, 0.5);
+}
+
+#back-to-main-btn:hover {
+    transform: translateY(-0.5vh);
+    box-shadow: 0 0.73vw 1.45vw rgba(0, 0, 0, 0.25),
+                0 0.52vw 0.52vw rgba(0, 0, 0, 0.22);
+}
+
+/* Responsive adjustments for info cards */
+@media (max-width: 900px) {
+    .volcan-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .volcan-grid {
+        grid-template-columns: 1fr;
+    }
+    .volcan-card.empty {
+        display: none; /* Hide empty card on mobile for better layout */
+    }
+}
