@@ -10,12 +10,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Configuración del juego con imágenes de minerales
     const cardData = [
-        { name: 'TURMALINA NEGRA', image: '3. Turmalina Negra.png' },
-        { name: 'CUARZO BLANCO', image: '4. Cuarzo Blanco.png' },
-        { name: 'MALAQUITA', image: '5._Malaquita-removebg-preview.png' },
-        { name: 'YESO', image: '8._Yeso-removebg-preview.png' },
-        { name: 'CALCITA ROSADA', image: '9._Calcita_Rosada_1-removebg-preview.png' },
-        { name: 'GALENA', image: '13._galena-removebg-preview.png' }
+        { name: 'TURMALINA NEGRA', image: 'https://drive.google.com/uc?id=1A56tqpnutPL59ioYxOqDWv2r5g3iW3aS' },
+        { name: 'CUARZO BLANCO', image: 'https://drive.google.com/uc?id=1eSfitw-RhDHYVK-IQUyHTT-FQrH6rBDd' },
+        { name: 'MALAQUITA', image: 'https://drive.google.com/uc?id=18HWEyfS0zCPi5wAVAC8LR-otFcuPMqzH' },
+        { name: 'YESO', image: 'https://drive.google.com/uc?id=1JtTeik-xwGJNreVN-uqW3Sr9ymzVwcPc' },
+        { name: 'CALCITA ROSADA', image: 'https://drive.google.com/uc?id=13BYMU47egGJc4TdGFUJdreVzbYGjNMeh' },
+        { name: 'GALENA', image: 'https://drive.google.com/uc?id=1jx143xjPr_2mW8bZd1vK2mQ4VQL5krUy' }
     ];
 
     let cards = [];
@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             cardElement.innerHTML = `
                 <div class="card-face card-front">
-                    <img src="assets/images/cards/${cardInfo.image}" alt="${cardInfo.name}">
+                    <img src="${cardInfo.image}" alt="${cardInfo.name}">
                     <div class="card-name">${cardInfo.name}</div>
                 </div>
                 <div class="card-face card-back"></div>

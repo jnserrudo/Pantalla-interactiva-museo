@@ -16,10 +16,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Datos del Juego ---
     const allImages = [
-        'Airampo.png', 'Arbusto.png', 'Bandurria.png', 'Cardón.png',
-        'Chinchilla.png', 'Cóndor.png', 'Flamenco.png', 'Juncos.png',
-        'Lagartija.png', 'Llama.png', 'Puma.png', 'Suri.png',
-        'Vicuña.png', 'Vizcacha.png', 'Zorro.png'
+        'https://drive.google.com/uc?id=1V4ZNrl8rMOvq0iHQyWjGv3uTSzguxGEN', 'https://drive.google.com/uc?id=1py_Z1t1oHylbI3sBqvwAw5TpFFFuCLkP', 'https://drive.google.com/uc?id=1kVBH9DznQ7I2EzzbCMQI7bKLBNnWsiP1', 'https://drive.google.com/uc?id=1AhIhdJzCBNBKUarJRHSjq63evlzuiXbG',
+        'https://drive.google.com/uc?id=1UvJku7Hbfy0bfd39jViAiaGaL-g59z_D', 'https://drive.google.com/uc?id=10eD5nKWtXMso8GaJ5gByp4o-D3XRQhou', 'https://drive.google.com/uc?id=17oqx6clebuKf7-OlRgJ0ILK5m6eP62Cs', 'https://drive.google.com/uc?id=1qA2TgzXQz5dIL2VsTGgIF9dvofYuGlrr',
+        'https://drive.google.com/uc?id=1hA4lBCnsBm-8s_rBXsqKHRKqOdrYP-Xa', 'https://drive.google.com/uc?id=13ZgSkq1QhZaVe6EM0G1zZ23dT4PU9Fo-', 'https://drive.google.com/uc?id=117k_RyXWgWWyIpLOslogeXcqEoDNatmZ', 'https://drive.google.com/uc?id=1A-RoZioU1n6Hwid0vQ1oZcRPIfpA5mbe',
+        'https://drive.google.com/uc?id=186e7ijk_WntGEEm6u09cp0e9xDF2OaDV', 'https://drive.google.com/uc?id=17H1YPgIuobU7EtlkH7qvsvF3gaGWGqfE', 'https://drive.google.com/uc?id=1YJLvZE8Q5SE_cx6Od2HbacOsXiLjHcjO'
     ];
 
     let currentRoundImages = [];
@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const populateCircle = (circle, imageArray) => {
             imageArray.forEach(imgName => {
                 const imgElement = document.createElement('img');
-                imgElement.src = `assets/images/silu/${imgName}`;
+                imgElement.src = imgName;
                 imgElement.classList.add('game-image');
                 imgElement.dataset.name = imgName;
                 
