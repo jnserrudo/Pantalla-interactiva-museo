@@ -107,8 +107,8 @@ button {
 }
 
 .image-circle {
-    width: clamp(300px, 30vw, 1200px);
-    height: clamp(300px, 30vw, 1200px);
+    width: clamp(250px, 40vmin, 500px);
+    height: clamp(250px, 40vmin, 500px);
     background-color: #f3e9e0;
     border-radius: 50%;
     position: relative;
@@ -219,9 +219,24 @@ button {
 
 /* Start Circle Image Container */
 #start-screen .start-image-container {
-    width: clamp(200px, 20vw, 800px);
-    height: clamp(200px, 20vw, 800px);
+    width: clamp(200px, 35vmin, 450px);
+    height: clamp(200px, 35vmin, 450px);
     background-color: #f3e9e0;
     border-radius: 50%;
     position: relative;
+}
+
+/* Responsive Layouts */
+@media (max-width: 900px) {
+    #start-screen .start-container,
+    .game-area {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    #start-screen .start-text {
+        max-width: 80%;
+        text-align: center;
+        transform: rotate(0) !important;
+    }
 }

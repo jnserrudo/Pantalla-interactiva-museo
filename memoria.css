@@ -34,9 +34,11 @@ button {
 /* Start Screen */
 #start-screen .start-container {
     display: flex;
-    width: 70%;
-    height: 55vh;
-    margin: 5vh auto;
+    width: 90vw;
+    max-width: 1400px;
+    height: 70vh;
+    max-height: 800px;
+    margin: auto;
     background-color: #5d4a40;
     border-radius: clamp(1rem, 2vw, 3rem);
     overflow: hidden;
@@ -247,4 +249,34 @@ button {
     border-radius: clamp(1rem, 2vw, 2rem);
     font-size: clamp(1.5rem, 2.5vw, 2.5rem);
     margin-top: clamp(1rem, 2vw, 2rem);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1200px) {
+    .game-board {
+        grid-template-columns: repeat(5, 1fr);
+    }
+}
+
+@media (max-width: 900px) {
+    .game-board {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    #start-screen .start-container {
+        flex-direction: column;
+        height: auto;
+        width: 90%;
+    }
+    #start-screen .start-image {
+        flex-basis: 40vh;
+    }
+    #start-screen .start-info {
+        flex-basis: auto;
+    }
+}
+
+@media (max-width: 600px) {
+    .game-board {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }

@@ -85,9 +85,16 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // --- Setup ---
+        const MAP_REFERENCE_WIDTH = 3840;
+        const MAP_REFERENCE_HEIGHT = 2160;
+
         buttons.forEach(button => {
-            button.style.left = button.dataset.x;
-            button.style.top = button.dataset.y;
+            const x_percent = (parseInt(button.dataset.x) / MAP_REFERENCE_WIDTH) * 100;
+            const y_percent = (parseInt(button.dataset.y) / MAP_REFERENCE_HEIGHT) * 100;
+            
+            button.style.left = `${x_percent}%`;
+            button.style.top = `${y_percent}%`;
+
             button.addEventListener('click', (e) => {
                 e.stopPropagation();
                 const popupSelector = button.dataset.popupTarget;
